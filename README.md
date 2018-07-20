@@ -1,9 +1,9 @@
-# glitch-out
+# chance-out
  a javascript Breakout clone (based on MDN Breakout)
 
 ### Prerequisites
 
-What things you need to get started with **glitch-out**
+What things you need to get started with **chance-out**
 
 ```
 * any web browser
