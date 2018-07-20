@@ -59,7 +59,7 @@
 			let brickOffsetLeft = 30;
 
 			let score = 0;
-			let highscore = localStorage.getItem("highscore");
+			let highScore = localStorage.getItem("highScore");
 
 			let bricks = [];			
 			for (let column = 0; column < brickColumnCount; column++) {
@@ -117,8 +117,10 @@
                                 score++;
                                 if (score === brickRowCount * brickColumnCount) {
                                     alert("YOU WIN, CONGRATULATIONS!");
-                                    localStorage.setItem("highscore", score);
                                     document.location.reload();
+                                    if (score > highScore) {
+                                        localStorage.setItem("highScore", score);
+                                    }
                                 }
                             }
                         }
@@ -132,11 +134,11 @@
                 ctx.fillText("Score: " + score, 8, 20);
             }
 
-            function drawHighscore() {
+            function drawHighScore() {
             	ctx.font = "bold 16px Arial";
             	ctx.fillStyle = generatedColor;
-            	if (highscore > 0) {
-                    ctx.fillText("Highscore: " + highscore, 370, 20);
+            	if (highScore > 0) {
+                    ctx.fillText("Highscore: " + highScore, 370, 20);
                 } else {
                     ctx.fillText("Highscore: 0", 370, 20);
                 }
@@ -183,7 +185,7 @@
 				drawBall();
 				drawPaddle();
 				drawScore();
-				drawHighscore();
+				drawHighScore();
 				collisionDetection();
 
 				if (x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
